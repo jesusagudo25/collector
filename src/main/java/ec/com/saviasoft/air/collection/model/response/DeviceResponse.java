@@ -15,6 +15,8 @@ public class DeviceResponse {
 
     private Integer userId;
 
+    private String userName;
+
     private String name;
 
     private String serialNumber;

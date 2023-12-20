@@ -19,7 +19,7 @@ import java.util.Date;
 public class AirQualityMeasurement {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     @JsonProperty("fecha-hora")
     @JsonFormat(pattern="dd-MM-yyyy HH:mm:ss")
@@ -46,6 +46,15 @@ public class AirQualityMeasurement {
     @JsonProperty("id-dispositivo")
     private Integer deviceId;
 
+    @JsonProperty("nombre-dispositivo")
+    private String deviceName;
+
+    @JsonProperty("id-usuario")
+    private Integer userId;
+
+    @JsonProperty("nombre-usuario")
+    private String userName;
+
     public AirQualityMeasurement(
             Date timestamp,
             Double methaneValue,
@@ -54,7 +63,10 @@ public class AirQualityMeasurement {
             Boolean ppmAlert,
             Double co2Value,
             Boolean co2Alert,
-            Integer deviceId
+            Integer deviceId,
+            String deviceName,
+            Integer userId,
+            String userName
     ) {
         this.timestamp = timestamp;
         this.methaneValue = methaneValue;
@@ -64,5 +76,9 @@ public class AirQualityMeasurement {
         this.co2Value = co2Value;
         this.co2Alert = co2Alert;
         this.deviceId = deviceId;
+        this.deviceName = deviceName;
+        this.userId = userId;
+        this.userName = userName;
+
     }
 }

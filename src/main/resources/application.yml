@@ -3,5 +3,31 @@ spring:
     mongodb:
       database: airquality-db
       uri: mongodb+srv://jagudo2514:S0GMi5G9D6z4hiTI@cluster0.xor7f74.mongodb.net
+  application:
+    name: ms-collection
+
 server:
-  port: 9000
+  port: 8089
+
+## Configuracion del cliente de Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: false
+    hostname: ${HOSTNAME:ms-collection}
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    non-secure-port: 80
+    secure-port: 443
+
+saviasoft:
+  app:
+    entity:
+      device:
+        findByUid:
+          url: ${ENTITY_URL_FIND_BY_UID:http:/ms-entity/devices/byUid/%s}
+      system-config:
+        get:
+          url: ${ENTITY_URL_GET:http://ms-entity/system-config/1}

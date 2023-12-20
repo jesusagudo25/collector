@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 @RequiredArgsConstructor
@@ -14,10 +15,12 @@ public class DeviceFacade {
 
     private final RestTemplate restTemplate;
 
+    @Value ("${saviasoft.app.entity.device.findByUid.url}")
+    private String findByUidUrl;
+
     public ResponseEntity<DeviceResponse> getDevice(String uid) {
         try {
-            String url = "http://localhost:8090/api/v1/devices/byUid";
-            return restTemplate.getForEntity(url + "/" + uid, DeviceResponse.class);
+            return restTemplate.getForEntity(String.format(findByUidUrl, uid), DeviceResponse.class);
         } catch (Exception e) {
             log.error("Error: {}", e.getMessage());
             return ResponseEntity.badRequest().build();
