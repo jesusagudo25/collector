@@ -2,7 +2,7 @@ spring:
   data:
     mongodb:
       database: airquality-db
-      uri: mongodb+srv://jagudo2514:S0GMi5G9D6z4hiTI@cluster0.xor7f74.mongodb.net
+      uri: ${MONGODB_URL:mongodb+srv://jagudo2514:S0GMi5G9D6z4hiTI@cluster0.xor7f74.mongodb.net}
   application:
     name: ms-collection
 
