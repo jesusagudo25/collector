@@ -11,23 +11,19 @@ server:
 
 ## Configuracion del cliente de Eureka
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: ${HOSTNAME:ms-collection}
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://172.17.0.2:8761/eureka}
-  instance:
-    preferIpAddress: false
-    hostname: ${HOSTNAME:ms-collection}
-    non-secure-port-enabled: false
-    secure-port-enabled: true
-    non-secure-port: 80
-    secure-port: 443
+      defaultZone: ${EUREKA_URL:http://127.0.0.1:8761/eureka}
 
 saviasoft:
   app:
     entity:
       device:
         findByUid:
-          url: ${ENTITY_URL_FIND_BY_UID:http:/ms-entity/devices/byUid/%s}
+          url: ${ENTITY_URL_FIND_BY_UID:http://127.0.0.1:8088/devices/byUid/%s}
       system-config:
         get:
-          url: ${ENTITY_URL_GET:http://ms-entity/system-config/1}
+          url: ${ENTITY_URL_GET:http://127.0.0.1:8088/system-config/1}
